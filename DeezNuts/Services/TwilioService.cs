@@ -13,17 +13,20 @@ namespace DeezNuts.Services
 {
     public class TwilioService : ITwilioService
     {
-        private readonly ISettingRepository _settings;
+        private readonly ISettingRepository _settingRepository;
+        private readonly IProductService _productService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DeezNutsConfig _config;
 
         public TwilioService(
             IOptions<DeezNutsConfig> config,
-            ISettingRepository settings,
+            IProductService productService,
+            ISettingRepository settingRepository,
             IHttpContextAccessor httpContextAccessor)
         {
             _config = config.Value;
-            _settings = settings;
+            _productService = productService;
+            _settingRepository = settingRepository;
             _httpContextAccessor = httpContextAccessor;
 
             var sid = _config.TwilioSid;
@@ -50,11 +53,12 @@ namespace DeezNuts.Services
         {
             return new Dictionary<string, string>
             {
-                { KeywordToken.BotName, _settings.GetSettingByType(SettingType.BotName).Value ?? "" },
-                { KeywordToken.CompanyName, _settings.GetSettingByType(SettingType.CompanyName).Value ?? "" },
+                { KeywordToken.BotName, _settingRepository.GetSettingByType(SettingType.BotName).Value ?? "" },
+                { KeywordToken.CompanyName, _settingRepository.GetSettingByType(SettingType.CompanyName).Value ?? "" },
                 { KeywordToken.CustomerName, context.Customer.Name ?? "" },
                 { KeywordToken.InputText, context.InputText ?? "" },
-                { KeywordToken.ListeningActionMatches, context.ListeningActionMatches ?? "" }
+                { KeywordToken.ListeningActionMatches, context.ListeningActionMatches ?? "" },
+                { KeywordToken.Products, _productService.BuildProductList() ?? "" }
             };
         }
 

@@ -46,6 +46,5 @@ namespace DeezNuts.Services
             customer.Session.LastActivityDateTime = DateTime.Now;
             _repository.Create(customer);
         }
-
     }
 }

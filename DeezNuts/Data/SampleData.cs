@@ -56,6 +56,18 @@ namespace DeezNuts.Data
                         new Message { Text = "'Sup boo!" },
                         new Message { Text = "Nuh uh! Nice to meet YOU!" },
                     }
+                },
+                new GeneralListeningAction
+                {
+                    Name = "Products List",
+                    RegexMatch = "((((what is)|(what's) ((on )|(the )|(this )?))))?((menu)|(products)|(week))(.*)",
+                    NextState = SessionState.Listening,
+                    Responses = new Message[]
+                    {
+                        new Message { Text = $"Glad you asked! Here's what we got this week: {Environment.NewLine} {Environment.NewLine} {{PRODUCTS}}" },
+                        new Message { Text = $"Let me show you! {Environment.NewLine} {Environment.NewLine} {{PRODUCTS}}" },
+                        new Message { Text = $"Okie dokie! Here's what's on the menu: {Environment.NewLine} {Environment.NewLine} {{PRODUCTS}}" },
+                    }
                 }
             };
         }
