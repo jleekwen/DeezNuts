@@ -55,7 +55,8 @@ namespace DeezNuts.Services
             {
                 { KeywordToken.BotName, _settingRepository.GetSettingByType(SettingType.BotName).Value ?? "" },
                 { KeywordToken.CompanyName, _settingRepository.GetSettingByType(SettingType.CompanyName).Value ?? "" },
-                { KeywordToken.CustomerName, context.Customer.Name ?? "" },
+                { KeywordToken.CustomerName, !string.IsNullOrEmpty(context.Customer.Name) ? context.Customer.Name : "" },
+                { KeywordToken.CustomerNameAllCaps, !string.IsNullOrEmpty(context.Customer.Name) ? context.Customer.Name.ToUpper() : "" },
                 { KeywordToken.InputText, context.InputText ?? "" },
                 { KeywordToken.ListeningActionMatches, context.ListeningActionMatches ?? "" },
                 { KeywordToken.Products, _productService.BuildProductList() ?? "" }
@@ -66,7 +67,8 @@ namespace DeezNuts.Services
         {
             public static string BotName { get { return "{BOTNAME}"; } }
             public static string CompanyName { get { return "{COMPANYNAME}"; } }
-            public static string CustomerName { get { return "{CUSTNAME}"; } }
+            public static string CustomerName { get { return "{CustName}"; } }
+            public static string CustomerNameAllCaps { get { return "{CUSTNAME}"; } }
             public static string InputText { get { return "{INPUT}"; } }
             public static string ListeningActionMatches { get { return "{ACTIONMATCHES}"; } }
             public static string Products { get { return "{PRODUCTS}"; } }

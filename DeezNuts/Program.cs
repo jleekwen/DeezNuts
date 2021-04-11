@@ -34,6 +34,8 @@ namespace DeezNuts
                 try
                 {
                     var context = services.GetRequiredService<DeezNutsContext>();
+
+                    //TODO: switch to scripts?
                     SampleData.Initialize(context);
                 }
                 catch (Exception ex)

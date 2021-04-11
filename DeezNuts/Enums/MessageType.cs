@@ -13,7 +13,8 @@
         ListeningActionResponseMultipleMatches,
 
         Error,
-
+        Help,
+        ProductsList,
         Schedule
     }
 }
