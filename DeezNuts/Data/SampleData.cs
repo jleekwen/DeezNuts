@@ -60,7 +60,7 @@ namespace DeezNuts.Data
                 new TypedListeningAction
                 {
                     Name = "Help",
-                    RegexMatch = "(help)|(what)|(what do i do)",
+                    RegexMatch = "(help)|(what do i do)",
                     ResponseMessageType = MessageType.Help,
                     NextState = SessionState.Listening
                 }
@@ -101,7 +101,7 @@ namespace DeezNuts.Data
         {
             return new TypedMessage[] {
                 new TypedMessage { Type = MessageType.IntroGreetingNew, Text = @"Hello! Nice to meet you! I take it you are interested in {COMPANYNAME}? If so, my name is {BOTNAME} and I'm your girl!" },
-                new TypedMessage { Type = MessageType.IntroGreetingNew, Text = $"New phone who dis? {Environment.NewLine}{Environment.NewLine} Just kidding! This is {{BOTNAME}} from {{COMPANYNAME}}. I was told to expect a message from you!" },
+                new TypedMessage { Type = MessageType.IntroGreetingNew, Text = $"New phone who dis? {Environment.NewLine}{Environment.NewLine}Just kidding! This is {{BOTNAME}} from {{COMPANYNAME}}. I was told to expect a message from you!" },
                 new TypedMessage { Type = MessageType.IntroGreetingNew, Text = @"Hello, you have reached {COMPANYNAME} Distribution. You're gonna love my nuts! My name is {BOTNAME}, nice to meet you!" },
                 new TypedMessage { Type = MessageType.IntroGreetingReturning, Text = @"Heyyyyy you! What's up?" },
                 new TypedMessage { Type = MessageType.IntroGreetingReturning, Text = @"Hello! *GLOMP*" },
@@ -114,11 +114,11 @@ namespace DeezNuts.Data
                 new TypedMessage { Type = MessageType.RequestNameResponseFail, Text = @"Ha. Ha. funny. Okay what's your name for reals?" },
                 new TypedMessage { Type = MessageType.RequestNameResponseSuccess, Text = $"Aww {{CustName}}, that's a pretty name! Nice to meet you! Welcome to the {{COMPANYNAME}} family! :) What can I do for you?" },
                 new TypedMessage { Type = MessageType.RequestNameResponseSuccess, Text = @"Well {CustName}, that makes us official doesn't it! Nice to meet you! How can I help you today?" },
-                new TypedMessage { Type = MessageType.RequestNameResponseSuccess, Text = $"{{CustName}}, {{CustName}}, {{CUSTNAME}}... Okay now I'll never forget it! Now your birthday, SIN, home address, and bank account numbers... {Environment.NewLine} {Environment.NewLine} Kidding!" },
+                new TypedMessage { Type = MessageType.RequestNameResponseSuccess, Text = $"{{CustName}}, {{CustName}}, {{CUSTNAME}}... Okay now I'll never forget it! Now your birthday, SIN, home address, and bank account numbers... {Environment.NewLine}{Environment.NewLine}Kidding!" },
                 new TypedMessage { Type = MessageType.ListeningActionResponseNoMatch, Text = @"Okay you got me. I have no idea what you're talking about. Don't tell my boss though, if I get in trouble the boss only feeds me tofurkey bacon for a week! Ask me about the delivery schedule or something!" },
-                new TypedMessage { Type = MessageType.ListeningActionResponseNoMatch, Text = $"Haha! {Environment.NewLine} {Environment.NewLine} Wait, was that supposed to be funny? Omgod sorry! Try asking me for the menu or something, I'm good at that one!" },
+                new TypedMessage { Type = MessageType.ListeningActionResponseNoMatch, Text = $"Haha! {Environment.NewLine}{Environment.NewLine}Wait, was that supposed to be funny? Omgod sorry! Try asking me for the menu or something, I'm good at that one!" },
                 new TypedMessage { Type = MessageType.ListeningActionResponseNoMatch, Text = @"Uhhhh, what the heck is ""{INPUT}""?? Maybe you want to put in an order, see the delivery schedule, check the stock this week?" },
-                new TypedMessage { Type = MessageType.ListeningActionResponseMultipleMatches, Text = $"Hold up. I'm not a bunny and you're not a frog so let's not jump ahead. {Environment.NewLine} {Environment.NewLine} Are you talking about {{ACTIONMATCHES}}?" },
+                new TypedMessage { Type = MessageType.ListeningActionResponseMultipleMatches, Text = $"Hold up. I'm not a bunny and you're not a frog so let's not jump ahead. {Environment.NewLine}{Environment.NewLine}Are you talking about {{ACTIONMATCHES}}?" },
                 new TypedMessage { Type = MessageType.ListeningActionResponseMultipleMatches, Text = @"Slow down! Let's do one thing at a time! Did you want to start with {ACTIONMATCHES}?" },
                 new TypedMessage { Type = MessageType.ListeningActionResponseMultipleMatches, Text = @"What the heck is ""{INPUT}""? Do you want to start with {ACTIONMATCHES}?" },
                 new TypedMessage { Type = MessageType.Schedule,
@@ -149,9 +149,9 @@ Your satisfaction is our goal. If you are ever unhappy with any of our products 
 If this sounds good to you, send us your address, buzzer and suite # (or we can plan to meet outside as well) and we'll add you to the list."
                 },
                 new TypedMessage { Type = MessageType.Help, Text = @"Hmm, I can give you the menu for this week or if you already know what you want you can put in an order!" },
-                new TypedMessage { Type = MessageType.ProductsList, Text = $"Glad you asked! Here's what we got this week: {Environment.NewLine} {Environment.NewLine} {{PRODUCTS}}" },
-                new TypedMessage { Type = MessageType.ProductsList, Text = $"Let me show you! {Environment.NewLine} {Environment.NewLine} {{PRODUCTS}}" },
-                new TypedMessage { Type = MessageType.ProductsList, Text = $"Okie dokie! Here's what's on the menu: {Environment.NewLine} {Environment.NewLine} {{PRODUCTS}}" },
+                new TypedMessage { Type = MessageType.ProductsList, Text = $"Glad you asked! Here's what we got this week: {Environment.NewLine}{Environment.NewLine}{{PRODUCTS}}" },
+                new TypedMessage { Type = MessageType.ProductsList, Text = $"Let me show you! {Environment.NewLine}{Environment.NewLine}{{PRODUCTS}}" },
+                new TypedMessage { Type = MessageType.ProductsList, Text = $"Okie dokie! Here's what's on the menu: {Environment.NewLine}{Environment.NewLine}{{PRODUCTS}}" },
                 new TypedMessage { Type = MessageType.Error, Text = @"ERROR. ERROR. You broke me somehow! BZZRRRKK!!@#" },
            };
         }

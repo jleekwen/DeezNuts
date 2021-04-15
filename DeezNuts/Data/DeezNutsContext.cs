@@ -47,10 +47,18 @@ namespace DeezNuts.Data
                 .HasIndex(m => m.TwilioMessageSid)
                 .IsUnique();
 
-            modelBuilder.Entity<Order>().ToTable("Orders");
-            modelBuilder.Entity<OrderItem>().ToTable("OrderItems");
-            modelBuilder.Entity<Product>().ToTable("Products");
-            modelBuilder.Entity<ProductPrice>().ToTable("ProductPrices");
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Items)
+                .WithOne(i => i.Order)
+                .HasForeignKey(i => i.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Prices)
+                .WithOne(pr => pr.Product)
+                .HasForeignKey(i => i.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Setting>().ToTable("Settings");
         }
     }

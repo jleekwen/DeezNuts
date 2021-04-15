@@ -94,7 +94,7 @@ namespace DeezNuts.Managers
         private MessageBuilderContext MultipleTypedMatches(Customer customer, IEnumerable<ListeningAction> listeningActions)
         {
             var typedActions = listeningActions.Where(l => l.GetType() == typeof(TypedListeningAction));
-            MessageBuilderContext returnObj = null;
+            var returnObj = new MessageBuilderContext();
 
             if (typedActions.Count() > 1)
             {

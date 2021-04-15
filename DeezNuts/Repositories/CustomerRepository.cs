@@ -29,14 +29,14 @@ namespace DeezNuts.Repositories
             {
                 if (customer.Id > 0)
                 {
-                    var existingCustomer = context.Customers.FirstOrDefault(c => c.Id == customer.Id);
+                    var existingCustomer = context.Customers.SingleOrDefault(c => c.Id == customer.Id);
                     //do the update to the database             
                     context.Entry(existingCustomer).CurrentValues.SetValues(customer);
                     context.Entry(existingCustomer).State = EntityState.Modified;
 
                     //then update the parent this way
                     //first get the particular parent for this student
-                    var session = context.CustomerSessions.FirstOrDefault(s => s.CustomerId == existingCustomer.Id);
+                    var session = context.CustomerSessions.SingleOrDefault(s => s.CustomerId == existingCustomer.Id);
 
                     context.Entry(session).CurrentValues.SetValues(customer.Session);
                     context.Entry(session).State = EntityState.Modified;

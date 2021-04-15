@@ -21,8 +21,9 @@ namespace DeezNuts.Managers.States
 
         public Customer DoAction(StateActionDto dto)
         {
-            var message = _messageService.GetRandomTypedMessage(MessageType.IntroGreetingNew).Text;
+            var message = _messageService.GetRandomTypedMessage(MessageType.IntroGreetingReturning).Text;
             var customer = dto.Customer;
+            customer.Session.AwaitState = SessionState.Listening;
 
             if (string.IsNullOrEmpty(customer.Name))
             {
