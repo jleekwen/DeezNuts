@@ -3,8 +3,6 @@ using DeezNuts.Dtos;
 using DeezNuts.Enums;
 using DeezNuts.Managers.States.Interfaces;
 using DeezNuts.Services;
-using Google.Cloud.Language.V1;
-using Microsoft.Extensions.Options;
 using System.Linq;
 using static Google.Cloud.Language.V1.Entity.Types;
 
@@ -12,16 +10,16 @@ namespace DeezNuts.Managers.States
 {
     public class AwaitNameState : IState
     {
-        private readonly DeezNutsConfig _config;
+        private readonly IGoogleAnalyticsService _googleAnalyticsService;
         private readonly ITwilioService _twilioService;
         private readonly IMessageService _messageService;
 
         public AwaitNameState(
-            IOptions<DeezNutsConfig> config,
+            IGoogleAnalyticsService googleAnalyticsService,
             ITwilioService twilioService,
             IMessageService messageService)
         {
-            _config = config.Value;
+            _googleAnalyticsService = googleAnalyticsService;
             _twilioService = twilioService;
             _messageService = messageService;
         }
@@ -31,17 +29,7 @@ namespace DeezNuts.Managers.States
             var customer = dto.Customer;
             string message = "";
 
-            LanguageServiceClientBuilder builder = new LanguageServiceClientBuilder
-            {
-                CredentialsPath = _config.GoogleCredentialFile
-            };
-
-            var languageServiceClient = builder.Build();
-
-            // TODO?: might have better results prepending question test
-            // var document = Document.FromPlainText($"{_messageService.GetRandomMessageByType(MessageType.RequestName).Text} {dto.InputText}");
-            var document = Document.FromPlainText($"{dto.InputText}");
-            var response = languageServiceClient.AnalyzeEntities(document);
+            var response = _googleAnalyticsService.Analyze(dto.InputText);
             var person = response.Entities.FirstOrDefault(e => e.Type == Type.Person);
 
             if (person != null)

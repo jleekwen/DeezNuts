@@ -36,13 +36,16 @@ namespace DeezNuts
             services.AddTransient<IListeningActionRepository, ListeningActionRepository>();
             services.AddTransient<IMessageLogRepository, MessageLogRepository>();
             services.AddTransient<IMessageRepository, MessageRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ISettingRepository, SettingRepository>();
 
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IGoogleAnalyticsService, GoogleAnalyticsService>();
             services.AddTransient<IListeningActionService, ListeningActionService>();
             services.AddTransient<IMessageLogService, MessageLogService>();
             services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ISettingService, SettingService>();
             services.AddTransient<ITwilioService, TwilioService>();

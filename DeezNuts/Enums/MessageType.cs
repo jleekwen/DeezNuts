@@ -5,6 +5,8 @@
         IntroGreetingNew,
         IntroGreetingReturning,
 
+        OrderResponse,
+
         RequestName,
         RequestNameResponseFail,
         RequestNameResponseSuccess,

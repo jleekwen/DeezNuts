@@ -6,6 +6,7 @@
         AwaitAddress,
         AwaitName,
         Listening,
+        Order,
 
         //new session
         GreetingNew,

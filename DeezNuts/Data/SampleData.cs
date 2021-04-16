@@ -63,6 +63,13 @@ namespace DeezNuts.Data
                     RegexMatch = "(help)|(what do i do)",
                     ResponseMessageType = MessageType.Help,
                     NextState = SessionState.Listening
+                },
+                new TypedListeningAction
+                {
+                    Name = "Order",
+                    RegexMatch = "order",
+                    ResponseMessageType = MessageType.OrderResponse,
+                    NextState = SessionState.Order
                 }
             };
         }
@@ -106,6 +113,9 @@ namespace DeezNuts.Data
                 new TypedMessage { Type = MessageType.IntroGreetingReturning, Text = @"Heyyyyy you! What's up?" },
                 new TypedMessage { Type = MessageType.IntroGreetingReturning, Text = @"Hello! *GLOMP*" },
                 new TypedMessage { Type = MessageType.IntroGreetingReturning, Text = $"You're back!!! I missed you! NEVER LEAVE ME AGAIN >:(" },
+                new TypedMessage { Type = MessageType.OrderResponse, Text = $"Oooh, exciting! What can I put in the cart for you?" },
+                new TypedMessage { Type = MessageType.OrderResponse, Text = $"Hooray! What can I get for you? I'll need the product name, the size, and how many!" },
+                new TypedMessage { Type = MessageType.OrderResponse, Text = $"Absolutely! Let me know what you want, what size you want, and how many you need! Make sure you get a lot of stuff otherwise I get put into the bad girl box." },
                 new TypedMessage { Type = MessageType.RequestName, Text = @"It looks like we don't have a file for you! What is your name?" },
                 new TypedMessage { Type = MessageType.RequestName, Text = @"Sooo.. what's your name?" },
                 new TypedMessage { Type = MessageType.RequestName, Text = @"I don't think we've officially met yet! What's your name?" },
